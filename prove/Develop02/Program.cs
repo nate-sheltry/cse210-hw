@@ -4,12 +4,14 @@ class Program
 {
     static void Main(string[] args)
     {
+        //Declare needed class instances/variables.
         Journal myJournal = new Journal();
         Entry newEntry;
         Boolean running = true;
         string filename;
         string input;
         int answer = 0;
+        
         while(running){
             Console.WriteLine("Please select one of the following choices:\n"
                             + "1. Write\n2. Display\n3. Display Entry\n4. Load\n5. Save\n6. Quit\n"
