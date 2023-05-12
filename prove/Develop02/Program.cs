@@ -1,5 +1,14 @@
 using System;
 
+/*Things this Program does to exceed requirements.
+ *  - Display's a singular Entry by using the Entry's date.
+ *  - Puts Entries that share a date into one Entry object in the Journal.
+ *    The other entries read Additional Entry containing the prompt as well.
+ *  - Uses an end symbol "||" to read multiple lines before loading the entry.
+ *  - Made Prompt a static class and had the Entry class obtain one randomly whenever
+ *    an instance of the Entry class is created. This is done using a function inside
+ *    the Prompt class.
+ */
 class Program
 {
     static void Main(string[] args)
