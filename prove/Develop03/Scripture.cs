@@ -1,7 +1,7 @@
 
 public class Scripture {
     private Reference _reference;
-    public List<Word> _excerpt;
+    private List<Word> _excerpt;
     private string[] tempString;
     private static Random randomNum = new Random();
     private int numb;
