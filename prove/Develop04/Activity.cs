@@ -121,8 +121,7 @@ public class Breathing : Activity{
         }
         EndMessage();
     }
-    public Breathing():
-    base(){
+    public Breathing(): base(){
         this._name = "Breathing Activity";
         this._startingMessage = SetStartMessage();
         this._prompts = new List<string>{"Breath in. . .", "Breath out. . ."};
