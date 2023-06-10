@@ -7,12 +7,28 @@ public class Activity{
     protected string _description;
     protected int? _time;
     protected List<string> _prompts;
-
+    Random randNum = new Random();
+    List<int> _usedIndexes = new List<int>();
     public Activity(){
         this._name = "Activity";
         _startingMessage = SetStartMessage();
         _endingMessage = SetEndMessage();
 
+    }
+    public int GetRandomNum(List<string> array){
+        int number;
+        while(true){
+            number = randNum.Next(0, array.Count);
+            if(!this._usedIndexes.Contains(number)){
+                this._usedIndexes.Add(number);
+                return number;
+            }
+            if(this._usedIndexes.Count == array.Count){
+                var lastValue = this._usedIndexes[this._usedIndexes.Count - 1];
+                this._usedIndexes.Clear(); this._usedIndexes.Add(lastValue);
+            }
+            continue;
+        }
     }
     public int? GetTime(){
         int? time = null;
@@ -63,12 +79,11 @@ public class Activity{
     }
 
     protected int Countdown(int time){
-        int timePassed = 1;
+        int timePassed = time;
         Console.Write("\b.");
         for(int i = time; i >= 0; i--){
-            Thread.Sleep(1000);
             Console.Write($"\b{i}");
-            timePassed = i;
+            Thread.Sleep(1000);
         }
         Thread.Sleep(100);
         Console.Write("\b.\b\n");
@@ -147,14 +162,14 @@ public class Reflecting : Activity {
         Spinner(2);
         Console.WriteLine("Consider the following prompt:\n");
 
-        Console.WriteLine($" --- {this._prompts[randNum.Next(0, this._prompts.Count)]} --- \n");
-        Console.WriteLine("When ready, press enter to continuie.");
+        Console.WriteLine($" --- {this._prompts[GetRandomNum(this._prompts)]} --- \n");
+        Console.WriteLine("When ready, press enter to continue.");
         Console.ReadLine();
         Console.WriteLine("Ponder the following questions.");
         Console.Write("Loading..."); Countdown(4);
         while(time < this._time){
-            Console.Write($" > {this._reflectionList[randNum.Next(0, this._reflectionList.Count)]}");
-            time = Spinner(6);
+            Console.Write($" > {this._reflectionList[GetRandomNum(this._reflectionList)]}");
+            time += Spinner(6);
         }
         EndMessage();
     }
@@ -178,7 +193,7 @@ public class Listing : Activity {
         Console.WriteLine("Loading...");
         Spinner(2);
         Console.WriteLine("List as many responses as you can to the following prompt:\n");
-        Console.WriteLine($" --- {this._prompts[randNum.Next(0, this._prompts.Count)]} --- \n");
+        Console.WriteLine($" --- {this._prompts[GetRandomNum(this._prompts)]} --- \n");
         Console.Write("Begins in:");Countdown(6);Console.WriteLine();
         DateTime endTime = DateTime.Now.AddSeconds((double)this._time);
         while(currentTime < endTime){
