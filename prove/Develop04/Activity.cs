@@ -7,15 +7,16 @@ public class Activity{
     protected string _description;
     protected int? _time;
     protected List<string> _prompts;
-    Random randNum = new Random();
-    List<int> _usedIndexes = new List<int>();
+    protected Random randNum = new Random();
+    protected List<int> _usedIndexes = new List<int>();
+
     public Activity(){
         this._name = "Activity";
         _startingMessage = SetStartMessage();
         _endingMessage = SetEndMessage();
 
     }
-    public int GetRandomNum(List<string> array){
+    protected int GetRandomNum(List<string> array){
         int number;
         while(true){
             number = randNum.Next(0, array.Count);
@@ -30,7 +31,7 @@ public class Activity{
             continue;
         }
     }
-    public int? GetTime(){
+    protected int? GetTime(){
         int? time = null;
         while(time == null){
             try{
@@ -43,7 +44,7 @@ public class Activity{
         }
         return time;
     }
-    public void StartMessage(){
+    protected void StartMessage(){
         Console.WriteLine(_startingMessage);
     }
     public string SetStartMessage(){
@@ -52,7 +53,7 @@ public class Activity{
     public string GetStartMessage(){
         return _startingMessage;
     }
-    public void EndMessage(){
+    protected void EndMessage(){
         Console.WriteLine("Well done!!");
         Spinner(2);
         Console.WriteLine(_endingMessage);
