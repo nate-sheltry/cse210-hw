@@ -12,17 +12,16 @@ class Program
 
     static void Main(string[] args)
     {
-        Console.WriteLine("Hello Develop04 World!");
-        int input;
+        Listing listing = new Listing();
 
+
+        int input;
         while(true){
 
-            Console.WriteLine("1. Menu Items\n"
-                             +"2. Menu Items\n"
-                             +"3. Menu Items\n"
-                             +"4. Menu Items\n"
-                             +"5. Menu Items\n"
-                             +"6. Menu Items\n");
+            Console.WriteLine("1. Breathing Activity\n"
+                             +"2. Reflecting Activity\n"
+                             +"3. Listing Activity\n"
+                             +"4. Quit\n");
             try {
                 input = int.Parse(Console.ReadLine());
             }catch(FormatException){
@@ -33,15 +32,21 @@ class Program
             }
             switch(input){
                 case 1:
+                Breathing breathing = new Breathing();
+                breathing.Display();
+                breathing = null;
                     break;
                 case 2:
+                Reflecting reflection = new Reflecting();
+                reflection.Display();
+                reflection = null;
                     break;
                 case 3:
+                listing.Display();
+                listing = null;
                     break;
                 case 4:
-                    break;
-                case 5:
-                    break;
+                    return;
                 case 6:
                     break;
             }
