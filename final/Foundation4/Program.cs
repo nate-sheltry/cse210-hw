@@ -16,7 +16,7 @@ class Program
         List<Activity> activities = new List<Activity>{running, cycling, swimming,
         running2, cycling2, swimming2};
         foreach(Activity activity in activities){
-            Console.WriteLine(activity.GetSummary());
+            Console.WriteLine(activity.GetSummary() +"\n");
         }
     }
 }
